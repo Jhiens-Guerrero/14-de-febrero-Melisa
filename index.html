@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine my Love</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Contenedor principal de la aplicación -->
+    <div class="container">
+        
+        <!-- Barra superior con búsqueda (simulada) 
+        <div class="header">
+            <button class="back-btn">←</button>
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Buscar contenido relacionado..." readonly>
+                <button class="search-btn">Buscar</button>
+            </div>
+        </div>-->
+
+        <!-- Pantalla 1: Sobre cerrado -->
+        <div class="screen screen-1 active">
+            <!-- Corazones flotantes animados -->
+            <div class="floating-hearts">
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+            </div>
+            
+            <!-- Contenedor con scroll -->
+            <div class="screen-content">
+                <!-- Título principal con diseño elegante -->
+                <div class="title-section">
+                    <h1 class="main-title">
+                        <span class="happy">HAPPY</span>
+                        <span class="valentine">Valentine</span>
+                        <span class="my-love">my Love</span>
+                    </h1>
+                    <p class="date">14 de Febrero</p>
+                </div>
+
+                <!-- Espacio para foto de ella (circular) -->
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <img src="im1.jpeg" alt="Foto de Melisa" class="profile-img">
+                    </div>
+                    <div class="heart-corner top-left"></div>
+                    <div class="heart-corner top-right"></div>
+                    <div class="heart-corner bottom-left"></div>
+                    <div class="heart-corner bottom-right"></div>
+                </div>
+
+                <!-- Sobre cerrado con animación de pulso -->
+                <div class="envelope-container">
+                    <div class="envelope closed">
+                        <!-- Texto "Para mi amor" -->
+                        <div class="envelope-to">
+                            <p>PARA MI AMOR:</p>
+                            <p class="name">Melisa Arispe</p>
+                        </div>
+                        
+                        <!-- Sello de cera rojo -->
+                        <div class="wax-seal">
+                            <span class="seal-text">♥</span>
+                        </div>
+                        
+                        <!-- Texto "Con cariño de" -->
+                        <div class="envelope-from">
+                            <p>CON CARIÑO DE:</p>
+                            <p class="name">Jhiens Guerrero</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instrucción para abrir la carta -->
+                <p class="instruction">Haz clic sobre la carta<br>para leerla.</p>
+                
+                <!-- Decoraciones adicionales -->
+                <div class="roses">
+                    <div class="rose rose-1">🌹</div>
+                    <div class="rose rose-2">🌹</div>
+                </div>
+            </div>
+
+            <!-- Botones de interacción lateral (simulados) -->
+            <!--<div class="sidebar-buttons">-->
+                <!--<div class="btn-group">
+                    <button class="side-btn like-btn">♥</button>
+                    <span class="count">92</span>
+                </div>
+                <div class="btn-group">
+                    <button class="side-btn comment-btn">💬</button>
+                    <span class="count">6</span>
+                </div>
+                <div class="btn-group">
+                    <button class="side-btn save-btn">🔖</button>
+                    <span class="count">31</span>
+                </div>
+                <div class="btn-group">
+                    <button class="side-btn share-btn">↗</button>
+                    <span class="count">10</span>
+                </div>
+            </div>-->
+
+        </div>
+
+        <!-- Pantalla 2: Carta abierta -->
+        <div class="screen screen-2">
+            <!-- Corazones flotantes animados -->
+            <div class="floating-hearts">
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+            </div>
+            
+            <!-- Contenedor con scroll -->
+            <div class="screen-content">
+                <!-- Título principal (repetido) -->
+                <div class="title-section">
+                    <h1 class="main-title">
+                        <span class="happy">HAPPY</span>
+                        <span class="valentine">Valentine</span>
+                        <span class="my-love">my Love</span>
+                    </h1>
+                </div>
+
+                <!-- Carta abierta con mensaje -->
+                <div class="letter-container">
+                    <div class="letter">
+                        <!-- Decoración de encaje en la parte superior -->
+                        <div class="lace-top"></div>
+                        
+                        <!-- Cinta decorativa superior -->
+                        <div class="ribbon-top"></div>
+                        
+                        <!-- Corazones decorativos -->
+                        <div class="heart-decoration heart-1"></div>
+                        <div class="heart-decoration heart-2"></div>
+                        <div class="heart-decoration heart-3"></div>
+                        <div class="heart-decoration heart-4"></div>
+                        
+                        <!-- Espacio para galería de fotos -->
+                        <div class="photo-gallery">
+                            <div class="gallery-photo photo-1">
+                                <img src="Imagen principal.jpeg" alt="Imagen Principal">
+                            </div>
+                            <div class="gallery-photo photo-2">
+                                <img src="im1.jpeg" alt="Foto 2">
+                            </div>
+                            <div class="gallery-photo photo-3">
+                                <img src="im2.jpeg" alt="Foto 3">
+                            </div>
+                        </div>
+                        
+                        <!-- Mensaje principal de la carta -->
+                        <div class="letter-content">
+                            <div class="love-icon">💕</div>
+                            
+                            <p>
+    Amor mío, mi chinita hermosa… a veces me pongo a pensar en cómo llegaste a mi vida y todavía me cuesta creerlo. Llegaste cuando menos lo esperaba y, sin darme cuenta, empezaste a cambiar tanto mi manera de sentir, de pensar y hasta de soñar. Con tu forma de ser, tan divertida, tan hermosa, tan tú… fuiste ocupando un lugar cada vez más grande en mi corazón, hasta convertirte poco a poco en el pilar que sostiene mi vida, en esa persona que ilumina mis días, calma mis miedos y hace que todo tenga mucho más sentido.
+    </p>
+
+    <div class="heart-divider">❤️ ❤️ ❤️</div>
+
+    <p>
+    No te prometo una vida perfecta, ni días sin tristeza, pero sí te prometo algo real: que voy a amarte en nuestros mejores días y también en los más difíciles; que voy a cuidarte, respetarte y caminar contigo siempre. Porque desde que llegaste, entendí que amar no es solo sentir bonito, sino elegir cada día quedarse, luchar y construir juntos.
+    </p>
+
+    <div class="heart-divider">💝 💝 💝</div>
+
+    <p>
+    Gracias por aparecer en mi vida, por cambiar a este hombre que antes no sabía a dónde iba. Hoy tengo metas, sueños y esperanza… y en todos ellos estás tú. Porque eres la que ilumina mi vida, la dueña de mi vida.
+    </p>
+
+    <div class="heart-divider">💖 💖 💖</div>
+
+    <p>
+    Te amo más de lo que me amo a mi, mi gordita hermosa. Y si algo tengo claro, es que quiero seguir a tu lado, sin importar la distancia, el tiempo o las dificultades… porque contigo todo vale la pena.
+    </p>
+    
+                            <div class="signature">
+                                <p class="signature-text">Con todo mi amor,</p>
+                                <p class="signature-name">Jhiens ❤️</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Moño decorativo -->
+                        <div class="bow"></div>
+                        
+                        <!-- Estrella decorativa -->
+                        <div class="star"></div>
+                        
+                        <!-- Flor decorativa -->
+                        <div class="flower"></div>
+                        
+                        <!-- Cupido -->
+                        <div class="cupid">💘</div>
+                        
+                        <!-- Texto manuscrito de fondo -->
+                        <div class="handwriting"></div>
+                    </div>
+                </div>
+
+                <!-- Botón para cerrar la carta -->
+                <div class="close-button">
+                    <p>Click sobre la<br>flecha ↓</p>
+                    <button class="arrow-btn">↓</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla 3: Jardín de Flores -->
+        <div class="screen screen-3">
+            <!-- Corazones flotantes animados -->
+            <div class="floating-hearts">
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+                <div class="floating-heart"></div>
+            </div>
+            
+            <!-- Contenedor con scroll -->
+            <div class="screen-content">
+                <!-- Título principal -->
+                <div class="title-section">
+                    <h1 class="main-title">
+                        <span class="happy">MIS FLORES</span>
+                        <span class="valentine">para ti</span>
+                        <span class="my-love">mi Amor</span>
+                    </h1>
+                </div>
+
+                <!-- Contenedor del jardín -->
+                <div class="garden-container">
+                    <div class="garden-card">
+                        <!-- Decoraciones florales -->
+                        <div class="flower-decoration tulip-1">🌷</div>
+                        <div class="flower-decoration tulip-2">🌷</div>
+                        <div class="flower-decoration sunflower-1">🌻</div>
+                        <div class="flower-decoration sunflower-2">🌻</div>
+                        <div class="flower-decoration tulip-3">🌷</div>
+                        <div class="flower-decoration sunflower-3">🌻</div>
+                        
+                        <!-- Mensaje del jardín -->
+                        <div class="garden-content">
+                            <div class="garden-icon">🌸💐🌺</div>
+                            
+                            <h2 class="garden-title">Acepta estas humildes flores de este hombre enamorado</h2>
+                            
+                            <p>
+                                Mi amor, espero que estas flores te gusten. Cada una que te dedico lleva un pedacito de mi corazón.Los tulipanes representan ese amor profundo y esa pasión que siento por ti cada día.
+
+                            </p>
+
+                            <div class="flower-divider">
+                                <span>🌷</span>
+                                <span>🌻</span>
+                                <span>🌷</span>
+                            </div>
+
+                            <p>
+                                Los girasoles me hacen pensar inevitablemente en ti, mi chinita hermosa.Así como ellos buscan siempre la luz del sol, yo busco tu sonrisa, tu voz.Eres mi sol, la claridad que ilumina mis días cuando todo parece oscuro, la calidez que me abraza incluso en la distancia.Gracias a ti sigo creciendo, soñando y creyendo… porque tu amor se volvió mi fuerza, mi refugio y mi motivo más bonito para seguir adelante. 💛
+
+                            </p>
+
+                            <div class="garden-signature">
+                                <p class="garden-signature-text">Para siempre tuyo,</p>
+                                <p class="garden-signature-name">Jhiens 🌹</p>
+                                <p class="garden-date">San Valentín 2026</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Mariposas decorativas -->
+                        <div class="butterfly butterfly-1">🦋</div>
+                        <div class="butterfly butterfly-2">🦋</div>
+                    </div>
+                </div>
+
+                <!-- Botón para volver al inicio -->
+                <div class="close-button">
+                    <p>Volver al inicio<br>↓</p>
+                    <button class="arrow-btn home-btn">🏠</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script JavaScript para la interactividad -->
+    <script src="script.js"></script>
+</body>
+</html>

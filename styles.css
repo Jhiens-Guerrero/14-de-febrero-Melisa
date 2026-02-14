@@ -1,0 +1,1566 @@
+/* ========================================
+   ESTILOS GENERALES Y RESET
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: #8B1F1F;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ========================================
+   CONTENEDOR PRINCIPAL
+   ======================================== */
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    height: 100vh;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #8B1F1F 0%, #A52A2A 50%, #8B1F1F 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Textura de fondo sutil */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(90deg, rgba(0,0,0,0.03) 0px, transparent 1px, transparent 2px, rgba(0,0,0,0.03) 3px),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.03) 0px, transparent 1px, transparent 2px, rgba(0,0,0,0.03) 3px);
+    pointer-events: none;
+}
+
+/* ========================================
+   HEADER CON BARRA DE BÚSQUEDA
+   ======================================== */
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+    position: relative;
+    z-index: 100;
+}
+
+.back-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.search-bar {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    padding: 8px 15px;
+    backdrop-filter: blur(10px);
+}
+
+.search-icon {
+    margin-right: 8px;
+}
+
+.search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-bar input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* ========================================
+   GESTIÓN DE PANTALLAS
+   ======================================== */
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Contenedor con scroll para cada pantalla */
+.screen-content {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 0;
+}
+
+/* Estilos personalizados para la barra de scroll */
+.screen-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.screen-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.screen-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #C41E3A 0%, #8B1538 100%);
+    border-radius: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.screen-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #E02850 0%, #A52A2A 100%);
+}
+
+/* ========================================
+   TÍTULO PRINCIPAL
+   ======================================== */
+
+/* Corazones flotantes animados */
+.floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #C41E3A;
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: float 15s infinite ease-in-out;
+}
+
+.floating-heart::before,
+.floating-heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #C41E3A;
+    border-radius: 50%;
+}
+
+.floating-heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.floating-heart::after {
+    top: 0;
+    left: 10px;
+}
+
+.floating-heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-heart:nth-child(2) {
+    left: 30%;
+    animation-delay: 3s;
+}
+
+.floating-heart:nth-child(3) {
+    left: 50%;
+    animation-delay: 6s;
+}
+
+.floating-heart:nth-child(4) {
+    left: 70%;
+    animation-delay: 9s;
+}
+
+.floating-heart:nth-child(5) {
+    left: 85%;
+    animation-delay: 12s;
+}
+
+.floating-heart:nth-child(6) {
+    left: 20%;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        transform: translateX(0) rotate(-45deg) scale(0.5);
+    }
+    10% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateX(20px) rotate(-45deg) scale(1);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(-20px) rotate(-45deg) scale(0.5);
+    }
+}
+
+.title-section {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    z-index: 10;
+}
+
+.main-title {
+    color: white;
+    line-height: 1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para "HAPPY" */
+.happy {
+    display: block;
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    font-family: 'Impact', sans-serif;
+    text-transform: uppercase;
+}
+
+/* Estilo para "Valentine" */
+.valentine {
+    display: block;
+    font-size: 56px;
+    font-family: 'Brush Script MT', cursive;
+    font-style: italic;
+    margin-top: -10px;
+    letter-spacing: 2px;
+}
+
+/* Estilo para "my Love" */
+.my-love {
+    display: block;
+    font-size: 52px;
+    font-family: 'Brush Script MT', cursive;
+    font-style: italic;
+    margin-top: -15px;
+    letter-spacing: 3px;
+}
+
+.date {
+    color: white;
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   SOBRE CERRADO (PANTALLA 1)
+   ======================================== */
+
+/* Marco de foto con decoración */
+.photo-frame {
+    width: 200px;
+    height: 200px;
+    margin: 30px auto;
+    position: relative;
+    z-index: 10;
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F5F0E8 0%, #EDE8DC 100%);
+    border: 5px solid white;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(200, 150, 150, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    color: #A52A2A;
+    font-size: 14px;
+    font-style: italic;
+    position: relative;
+    overflow: hidden;
+}
+
+.photo-placeholder::before {
+    content: '📷';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* Estilos para imágenes dentro del marco circular */
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+/* Corazones en las esquinas del marco */
+.heart-corner {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #C41E3A;
+    transform: rotate(-45deg);
+}
+
+.heart-corner::before,
+.heart-corner::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #C41E3A;
+    border-radius: 50%;
+}
+
+.heart-corner::before {
+    top: -7.5px;
+    left: 0;
+}
+
+.heart-corner::after {
+    top: 0;
+    left: 7.5px;
+}
+
+.heart-corner.top-left {
+    top: -10px;
+    left: 20px;
+}
+
+.heart-corner.top-right {
+    top: -10px;
+    right: 20px;
+}
+
+.heart-corner.bottom-left {
+    bottom: -10px;
+    left: 20px;
+}
+
+.heart-corner.bottom-right {
+    bottom: -10px;
+    right: 20px;
+}
+
+/* Rosas decorativas */
+.roses {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.rose {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.6;
+    animation: sway 4s ease-in-out infinite;
+}
+
+.rose-1 {
+    top: 200px;
+    left: 20px;
+}
+
+.rose-2 {
+    top: 250px;
+    right: 20px;
+    animation-delay: 2s;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 10;
+}
+
+.envelope {
+    width: 520px;
+    height: 360px;
+    background: linear-gradient(135deg, #F5F0E8 0%, #EDE8DC 100%);
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Efecto hover en el sobre */
+.envelope:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+/* Animación de pulso del sobre */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.envelope.closed {
+    animation: pulse 2s infinite;
+}
+
+/* Pliegue del sobre (parte superior) */
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, transparent 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+/* Línea de pliegue central */
+.envelope::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+/* ========================================
+   TEXTO EN EL SOBRE
+   ======================================== */
+
+.envelope-to {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #A52A2A;
+}
+
+.envelope-to p:first-child {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.envelope-to .name {
+    font-size: 36px;
+    font-family: 'Brush Script MT', cursive;
+    font-style: italic;
+}
+
+.envelope-from {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #A52A2A;
+}
+
+.envelope-from p:first-child {
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.envelope-from .name {
+    font-size: 36px;
+    font-family: 'Brush Script MT', cursive;
+    font-style: italic;
+}
+
+/* ========================================
+   SELLO DE CERA
+   ======================================== */
+
+.wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, #C41E3A 0%, #8B1538 70%, #5D0F28 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seal-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 36px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.seal-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 36px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   INSTRUCCIONES Y BOTONES LATERALES
+   ======================================== */
+
+.instruction {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 10;
+}
+
+.sidebar-buttons {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 50;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.side-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.side-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.count {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ========================================
+   INFORMACIÓN DEL CREADOR
+   ======================================== */
+
+.creator-info {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 50;
+}
+
+.profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.creator-text {
+    color: white;
+}
+
+.creator-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.creator-desc {
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+/* ========================================
+   CARTA ABIERTA (PANTALLA 2)
+   ======================================== */
+
+.letter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.letter {
+    width: 460px;
+    height: auto;
+    max-height: 85vh;
+    background: linear-gradient(135deg, #F5F0E8 0%, #EDE8DC 100%);
+    border-radius: 8px;
+    position: relative;
+    padding: 40px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    animation: fadeInUp 0.6s ease;
+    overflow-y: auto;
+}
+
+/* Animación de entrada de la carta */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   DECORACIONES DE LA CARTA
+   ======================================== */
+
+/* Encaje superior */
+.lace-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 180px;
+    height: 80px;
+    background: 
+        radial-gradient(circle at 10px 10px, transparent 8px, white 8px, white 12px, transparent 12px),
+        radial-gradient(circle at 30px 10px, transparent 8px, white 8px, white 12px, transparent 12px),
+        radial-gradient(circle at 50px 10px, transparent 8px, white 8px, white 12px, transparent 12px);
+    background-size: 20px 20px;
+    background-position: 0 0;
+    opacity: 0.9;
+    border-bottom: 2px solid rgba(200, 200, 200, 0.3);
+}
+
+/* Cinta superior */
+.ribbon-top {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #A52A2A;
+}
+
+/* Corazones decorativos */
+.heart-decoration {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #C41E3A;
+    transform: rotate(-45deg);
+}
+
+.heart-decoration::before,
+.heart-decoration::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #C41E3A;
+    border-radius: 50%;
+}
+
+.heart-decoration::before {
+    top: -15px;
+    left: 0;
+}
+
+.heart-decoration::after {
+    top: 0;
+    left: 15px;
+}
+
+.heart-1 {
+    top: 60px;
+    left: 30px;
+}
+
+.heart-2 {
+    top: 80px;
+    left: 50px;
+    width: 20px;
+    height: 20px;
+}
+
+.heart-2::before,
+.heart-2::after {
+    width: 20px;
+    height: 20px;
+}
+
+.heart-2::before {
+    top: -10px;
+}
+
+.heart-2::after {
+    left: 10px;
+}
+
+.heart-3 {
+    top: 100px;
+    right: 40px;
+    width: 25px;
+    height: 25px;
+}
+
+.heart-3::before,
+.heart-3::after {
+    width: 25px;
+    height: 25px;
+}
+
+.heart-3::before {
+    top: -12.5px;
+}
+
+.heart-3::after {
+    left: 12.5px;
+}
+
+.heart-4 {
+    bottom: 120px;
+    left: 50px;
+    width: 18px;
+    height: 18px;
+}
+
+.heart-4::before,
+.heart-4::after {
+    width: 18px;
+    height: 18px;
+}
+
+.heart-4::before {
+    top: -9px;
+}
+
+.heart-4::after {
+    left: 9px;
+}
+
+/* ========================================
+   GALERÍA DE FOTOS
+   ======================================== */
+
+.photo-gallery {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+.gallery-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(165, 42, 42, 0.1) 100%);
+    border: 3px solid #C41E3A;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 0 10px rgba(200, 150, 150, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #A52A2A;
+    font-size: 12px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Estilos para las imágenes dentro de los marcos */
+.gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 7px;
+}
+
+.gallery-photo::before {
+    content: '📷';
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.gallery-photo:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.photo-1 {
+    transform: rotate(-3deg);
+}
+
+.photo-2 {
+    transform: rotate(2deg);
+}
+
+.photo-3 {
+    transform: rotate(-2deg);
+}
+
+/* ========================================
+   CONTENIDO DE LA CARTA
+   ======================================== */
+
+/* Estilos para la barra de scroll */
+.letter::-webkit-scrollbar {
+    width: 8px;
+}
+
+.letter::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.letter::-webkit-scrollbar-thumb {
+    background: #C41E3A;
+    border-radius: 4px;
+}
+
+.letter::-webkit-scrollbar-thumb:hover {
+    background: #A52A2A;
+}
+
+.letter-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 80px 20px 80px;
+    color: #333;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.letter-content p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* Icono de amor al inicio */
+.love-icon {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: pulse-love 2s infinite;
+}
+
+@keyframes pulse-love {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Separadores con corazones */
+.heart-divider {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0;
+    opacity: 0.7;
+}
+
+/* Firma */
+.signature {
+    margin-top: 40px;
+    text-align: right;
+    padding-right: 20px;
+}
+
+.signature-text {
+    font-size: 16px;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.signature-name {
+    font-size: 28px;
+    font-family: 'Brush Script MT', cursive;
+    color: #C41E3A;
+    font-weight: bold;
+}
+
+/* ========================================
+   MOÑO DECORATIVO
+   ======================================== */
+
+.bow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 30px;
+}
+
+/* Lazo izquierdo */
+.bow::before {
+    content: '';
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid #C41E3A;
+}
+
+/* Lazo derecho */
+.bow::after {
+    content: '';
+    position: absolute;
+    right: -25px;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #C41E3A;
+}
+
+/* Centro del moño */
+.bow {
+    background: #C41E3A;
+    border-radius: 3px;
+}
+
+/* ========================================
+   ESTRELLA DECORATIVA
+   ======================================== */
+
+.star {
+    position: absolute;
+    bottom: 70px;
+    right: 80px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 26px solid #C41E3A;
+}
+
+.star::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -15px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 26px solid #C41E3A;
+}
+
+/* ========================================
+   SELLO POSTAL
+   ======================================== */
+
+.postal-stamp {
+    position: absolute;
+    bottom: 100px;
+    right: 50px;
+    width: 120px;
+    height: 90px;
+    border: 3px solid #A52A2A;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 5px;
+}
+
+/* Líneas onduladas del sello */
+.stamp-lines {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 30px;
+    height: 20px;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            #A52A2A,
+            #A52A2A 2px,
+            transparent 2px,
+            transparent 5px
+        );
+    border-radius: 2px;
+}
+
+/* Círculo del sello */
+.stamp-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 60px;
+    border: 2px solid #A52A2A;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: #A52A2A;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.stamp-date {
+    font-weight: bold;
+    font-size: 9px;
+}
+
+.stamp-location {
+    font-size: 7px;
+}
+
+/* ========================================
+   FLOR DECORATIVA
+   ======================================== */
+
+.flower {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #C41E3A 30%, #8B1538 60%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+/* Pétalos de la flor */
+.flower::before,
+.flower::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #C41E3A 30%, #8B1538 60%, transparent 70%);
+    border-radius: 50%;
+}
+
+.flower::before {
+    top: -15px;
+    left: 10px;
+}
+
+.flower::after {
+    top: 10px;
+    left: -15px;
+}
+
+/* Cupido */
+.cupid {
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    font-size: 40px;
+    opacity: 0.8;
+    animation: cupid-float 3s ease-in-out infinite;
+}
+
+@keyframes cupid-float {
+    0%, 100% {
+        transform: translateY(0) rotate(10deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-10deg);
+    }
+}
+
+/* ========================================
+   TEXTO MANUSCRITO DE FONDO
+   ======================================== */
+
+.handwriting {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: 200px;
+    height: 60px;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.15);
+    line-height: 1.5;
+    transform: rotate(-5deg);
+    z-index: 1;
+}
+
+.handwriting::before {
+    content: 'Ximena, Ama que fuengo del corazón de la novia ultimi...';
+    display: block;
+    white-space: pre-wrap;
+}
+
+/* ========================================
+   BOTÓN DE CERRAR CARTA
+   ======================================== */
+
+.close-button {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 50;
+}
+
+.close-button p {
+    color: white;
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #C41E3A;
+    color: #C41E3A;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-btn:hover {
+    background: #C41E3A;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 500px) {
+    .envelope {
+        width: 90%;
+        height: 320px;
+    }
+    
+    .letter {
+        width: 90%;
+        height: auto;
+        max-height: 80vh;
+        padding: 30px 20px;
+    }
+    
+    .letter-content {
+        padding: 60px 15px 60px;
+        font-size: 16px;
+    }
+    
+    .main-title .happy {
+        font-size: 48px;
+    }
+    
+    .main-title .valentine,
+    .main-title .my-love {
+        font-size: 40px;
+    }
+    
+    .photo-frame {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .photo-gallery {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .gallery-photo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .floating-heart {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .floating-heart::before,
+    .floating-heart::after {
+        width: 15px;
+        height: 15px;
+    }
+    
+    .floating-heart::before {
+        top: -7.5px;
+    }
+    
+    .floating-heart::after {
+        left: 7.5px;
+    }
+    
+    .rose {
+        font-size: 30px;
+    }
+    
+    .cupid {
+        font-size: 30px;
+    }
+}
+
+/* ========================================
+   PANTALLA 3: JARDÍN DE FLORES
+   ======================================== */
+
+.garden-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    position: relative;
+    z-index: 10;
+    padding: 0 20px;
+}
+
+.garden-card {
+    width: 460px;
+    background: linear-gradient(135deg, #FFF9F0 0%, #FFF5E8 100%);
+    border-radius: 15px;
+    position: relative;
+    padding: 50px 40px;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.5);
+    animation: fadeInUp 0.6s ease;
+}
+
+/* Decoraciones florales alrededor */
+.flower-decoration {
+    position: absolute;
+    font-size: 45px;
+    opacity: 0.9;
+    animation: flower-sway 4s ease-in-out infinite;
+}
+
+.tulip-1 {
+    top: -20px;
+    left: 20px;
+}
+
+.tulip-2 {
+    top: 50%;
+    left: -25px;
+    animation-delay: 1s;
+}
+
+.tulip-3 {
+    bottom: 20px;
+    right: 30px;
+    animation-delay: 2s;
+}
+
+.sunflower-1 {
+    top: -20px;
+    right: 20px;
+    animation-delay: 0.5s;
+}
+
+.sunflower-2 {
+    top: 50%;
+    right: -25px;
+    animation-delay: 1.5s;
+}
+
+.sunflower-3 {
+    bottom: 20px;
+    left: 30px;
+    animation-delay: 2.5s;
+}
+
+@keyframes flower-sway {
+    0%, 100% {
+        transform: rotate(-8deg) scale(1);
+    }
+    50% {
+        transform: rotate(8deg) scale(1.05);
+    }
+}
+
+/* Mariposas decorativas */
+.butterfly {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.8;
+    animation: butterfly-fly 8s ease-in-out infinite;
+}
+
+.butterfly-1 {
+    top: 100px;
+    left: -10px;
+}
+
+.butterfly-2 {
+    bottom: 150px;
+    right: -10px;
+    animation-delay: 4s;
+}
+
+@keyframes butterfly-fly {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(30px, -20px) rotate(10deg);
+    }
+    50% {
+        transform: translate(0, -40px) rotate(-10deg);
+    }
+    75% {
+        transform: translate(-30px, -20px) rotate(5deg);
+    }
+}
+
+/* Contenido del jardín */
+.garden-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: #333;
+}
+
+.garden-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: pulse-love 2s infinite;
+}
+
+.garden-title {
+    font-size: 28px;
+    font-family: 'Brush Script MT', cursive;
+    color: #C41E3A;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.garden-content p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+    color: #444;
+}
+
+.garden-content strong {
+    color: #C41E3A;
+    font-weight: bold;
+}
+
+/* Separadores con flores */
+.flower-divider {
+    text-align: center;
+    font-size: 28px;
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.flower-divider span {
+    animation: flower-spin 3s ease-in-out infinite;
+}
+
+.flower-divider span:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.flower-divider span:nth-child(3) {
+    animation-delay: 2s;
+}
+
+@keyframes flower-spin {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(15deg) scale(1.1);
+    }
+}
+
+/* Firma del jardín */
+.garden-signature {
+    margin-top: 40px;
+    text-align: right;
+    padding-right: 20px;
+    border-top: 2px solid rgba(196, 30, 58, 0.3);
+    padding-top: 20px;
+}
+
+.garden-signature-text {
+    font-size: 16px;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.garden-signature-name {
+    font-size: 30px;
+    font-family: 'Brush Script MT', cursive;
+    color: #C41E3A;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.garden-date {
+    font-size: 14px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Botón de inicio */
+.home-btn {
+    background: white;
+    border: 3px solid #C41E3A;
+    color: #C41E3A;
+    font-size: 28px;
+}
+
+.home-btn:hover {
+    background: #C41E3A;
+    color: white;
+}
+
+/* Responsive para pantalla 3 */
+@media (max-width: 500px) {
+    .garden-card {
+        width: 90%;
+        padding: 40px 25px;
+    }
+    
+    .garden-title {
+        font-size: 24px;
+    }
+    
+    .garden-content p {
+        font-size: 16px;
+    }
+    
+    .flower-decoration {
+        font-size: 35px;
+    }
+    
+    .butterfly {
+        font-size: 25px;
+    }
+}
